@@ -1,0 +1,5 @@
+{
+  "name": "GCP Terraform IaC Generator",
+  "description": "An application to generate a complete Terraform codebase for deploying common GCP infrastructure, including VPC, GKE, Compute Engine, and more. Users can configure resources through a UI and get ready-to-use IaC files.",
+  "requestFramePermissions": []
+}

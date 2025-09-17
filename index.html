@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GCP Terraform IaC Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'gray': {
+                950: '#0c0c0f',
+                900: '#111115',
+                800: '#1c1c21',
+                700: '#282830',
+                600: '#41414a',
+                500: '#73737d',
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <script>
+      // Placeholder ini akan diganti oleh skrip docker-entrypoint.sh
+      // dengan nilai dari environment variable API_KEY.
+      window.GCP_GENERATOR_API_KEY = "__API_KEY__";
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.19.0",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.0.2",
+    "vite": "https://aistudiocdn.com/vite@^7.1.5",
+    "vitest": "https://aistudiocdn.com/vitest@^3.2.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-950 text-gray-200">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
