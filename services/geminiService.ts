@@ -77,7 +77,15 @@ export const createPrompt = (config: GcpConfig): string => {
 };
 
 export const generateTerraformCode = async (config: GcpConfig): Promise<GeneratedFiles> => {
-  const apiKey = window.GCP_GENERATOR_API_KEY;
+  // Prefer a Vite env var for local development (VITE_GCP_GENERATOR_API_KEY) and
+  // fall back to the window global which is replaced by the container entrypoint
+  // at runtime. This keeps both local dev and Cloud Run deployments working.
+  // Note: import.meta.env is typed by Vite; use a safe cast for runtime access.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const viteEnv = (import.meta as any)?.env ?? {};
+  const apiKeyFromVite = String(viteEnv.VITE_GCP_GENERATOR_API_KEY || "");
+  const apiKey = apiKeyFromVite || window.GCP_GENERATOR_API_KEY;
+
   if (!apiKey || apiKey === "__API_KEY__") {
     throw new Error("API_KEY is not configured. Please set the API_KEY environment variable for the container.");
   }
